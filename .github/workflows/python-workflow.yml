@@ -1,9 +1,6 @@
 name: CI
 on:
-  push: 
-permissions: 
-  contents: write
-
+  workflow_dispatch: 
 jobs:
   build:
     runs-on: ubuntu-latest
