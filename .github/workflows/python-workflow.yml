@@ -20,10 +20,10 @@ jobs:
     needs: build
     concurrency: 
       group: production-deploy
-      cancel-in-progress: true
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
     - name: Display Hello World
       run: |
             echo "Welcome to GitHub Actions" 
-            sleep 600s
+            sleep 300s
