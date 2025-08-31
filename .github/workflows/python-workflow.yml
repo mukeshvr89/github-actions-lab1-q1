@@ -2,7 +2,7 @@ name: CI
 on:
   push: 
 permissions: 
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -16,5 +16,5 @@ jobs:
 
     - name: Install dependencies
       run: |
-            sudo chmod +x  requirements.txt
-            pip install -r requirements.txt
+            sudo chmod +x  ./requirements.txt
+            pip install -r ./requirements.txt
