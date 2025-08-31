@@ -1,30 +1,21 @@
-name: CI
-permissions: 
-  actions: read
-on:
-  workflow_dispatch:
+# 
+name: Matrix configuration
+on: 
+  push: 
+  workflow_dispatch: 
 jobs:
-  build:
+  ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.11
+      - name: Docker info
+        run: docker info
+      - name: Docker hello world
+        run: docker run hello-world
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-  
-  deploy:
-    needs: build
-    concurrency: 
-      group: production-deploy
-      cancel-in-progress: false
-    runs-on: ubuntu-latest
+  windows:
+    runs-on: windows-latest
     steps:
-    - name: Display Hello World
-      timeout-minutes: 1
-      run: |
-            echo "Welcome to GitHub Actions" 
-            sleep 300s
+      - name: Docker info
+        run: docker info
+      - name: Docker hello world
+        run: docker run hello-world
