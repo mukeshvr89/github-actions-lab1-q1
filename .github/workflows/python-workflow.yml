@@ -7,11 +7,11 @@ jobs:
   deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04, windows-latest,windows-2019 ]
+        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
         images: [hello-world, alpine]
         exclude:
           - images: alpine
-            os: [windows-latest, windows-2019]
+            os: windows-latest
         include:
           - images: amd64/alpine
             os: ubuntu-latest
