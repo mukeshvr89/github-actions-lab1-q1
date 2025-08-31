@@ -4,18 +4,20 @@ on:
   push: 
   workflow_dispatch: 
 jobs:
-  ubuntu:
-    runs-on: ubuntu-latest
+  deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04, windows-latest,windows-2019 ]
+        images: [hello-world, alpine]
+        exclude:
+          - images: alpine
+            os: [windows-latest, windows-2019]
+        include:
+          - images: amd64/alpine
+            os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Docker info
+      - name: Docker Detail 
         run: docker info
-      - name: Docker hello world
-        run: docker run hello-world
-
-  windows:
-    runs-on: windows-latest
-    steps:
-      - name: Docker info
-        run: docker info
-      - name: Docker hello world
-        run: docker run hello-world
+      - name: Run image on
+        run: docker run ${{ matrix.images }}
