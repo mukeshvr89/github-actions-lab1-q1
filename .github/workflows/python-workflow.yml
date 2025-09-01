@@ -57,34 +57,17 @@
 #         run: echo "$MATRIX_CONTEXT"
 
 ### if expression ##
-name: First workflow
-on: 
-  workflow_dispatch: 
-  push: 
-    branches: 
-      - main
-      - '!feature/*'
-  pull_request: 
-    types: 
-      - opened
-      - closed
-    paths-ignore: 
-      - README.md
-    branches: 
-      - main
+name: Debug logging
+on: push
 jobs:
-  condition_testing:
+  debug_logs:
     runs-on: ubuntu-latest
     steps:
-      - name: Docker info
-        run: docker info
-      - name: docker run
-        run: docker run hello-world
-    
-  deploy:
-    needs: condition_testing
-    runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Welcome message
-        run: echo 'Welcome to Github Action'
+     - name: docker info
+       run: docker info
+     - name: docker run
+       run: | 
+             docker run hello-world
+             exit 1
+     - name: Display date and time
+       run: echo "Date and time is $(date)"
