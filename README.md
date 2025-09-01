@@ -3,3 +3,4 @@ testing it.
 Testing the paths-ignore: 
       - README.md
       testing this
+testing it
