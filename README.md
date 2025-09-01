@@ -6,3 +6,4 @@ Testing the paths-ignore:
 testing it
 
 new changes
+modified it
