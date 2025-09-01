@@ -58,7 +58,20 @@
 
 ### if expression ##
 name: First workflow
-on: push
+on: 
+  workflow_dispatch: 
+  push: 
+    branches: 
+      - main
+      - '!feature/*'
+  pull_request: 
+    types: 
+      - opened
+      - closed
+    paths-ignore: 
+      - README.md
+    branches: 
+      - main
 jobs:
   condition_testing:
     runs-on: ubuntu-latest
