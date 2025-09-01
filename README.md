@@ -4,3 +4,5 @@ Testing the paths-ignore:
       - README.md
       testing this
 testing it
+
+new changes
