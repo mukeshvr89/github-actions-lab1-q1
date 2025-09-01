@@ -84,7 +84,7 @@ jobs:
   deploy:
     needs: condition_testing
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main'
     steps:
       - name: Welcome message
         run: echo 'Welcome to Github Action'
